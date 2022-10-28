@@ -2,6 +2,7 @@ const initState = {
     news : [],
     searchNews: [],
     loading:false,
+    pagenum:1,
 }
 
 const newsReducer = (state=initState, action) => {
@@ -16,6 +17,8 @@ const newsReducer = (state=initState, action) => {
             return{...state, searchNews:action.payload}
         case 'IS_LOADING':
             return{...state, loading:true}
+        case 'PAGE':
+            return{...state, pagenum:state.pagenum + 1}
         default:
             return {...state}
     }

@@ -1,63 +1,90 @@
 import {useSelector, useDispatch} from 'react-redux';
-import React, {useEffect} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {LoadNews} from '../actions/newAction';
 // Styling and animation
 import styled from 'styled-components';
 import {motion} from 'framer-motion';
-// Components
-import Loading from '../components/Loading';
-import News from '../components/News';
+import {useScroll} from '../components/useScroll';
+import { Route, Routes } from 'react-router-dom';
+import Technology from '../components/Technology';
+import Sport from '../components/Sport';
+import Politics from '../components/Politics';
+import Frontpage from '../components/Frontpage';
+import SignIn from '../components/Signin';
+import Search from '../components/Search';
+// Images
+import Nigeria from '../images/nigeria.svg';
+import SouthAfrica from '../images/south-africa-flag.svg';
+import Ghana from '../images/ghana-flag.svg';
+import Uganda from '../images/uganda-flag.svg';
+import Uk from '../images/united-kingdom-flag.svg';
+import France from '../images/france-flag.svg';
 
+
+export const country = [
+    {
+      code:'+234',
+      image:Nigeria
+    },
+    {
+      code:'+27',
+      image:SouthAfrica
+    },
+    {
+      code:'+233',
+      image:Ghana
+    },
+    {
+      code:'+256',
+      image:Uganda
+    },
+    {
+      code:'+44',
+      image:Uk
+    },
+    {
+      code:'+233',
+      image:Ghana
+    },
+    {
+      code:'+33',
+      image:France
+    },
+  ];
 const Home = () => {
+    const [element, controls] = useScroll();
+    const containerRef = useRef(null);
+    const infiniteRef = useRef(null)?.current;
+    console.log(containerRef)
+    const {news, pagenum} = useSelector((state)=> state.news);
 // Fetch News
 const dispatch = useDispatch();
 useEffect(()=>{
-dispatch(LoadNews());
+dispatch(LoadNews(pagenum));
+// Intersection(containerRef?.current);
+// InfiniteSection(infiniteRef);
 }, [])
 // Get the data back from the store
-const {news, searchNews} = useSelector((state)=> state.news);
-console.log(news)
-console.log(searchNews?searchNews:'');
+
+const heroNews = news[news.length-1];
   return (
-    <NewsList>
-        
-        <h2>TODAY'S NEWS</h2>
-        {news.length>0?
-        <NewsItem>
-            {
-                news.map((item, i)=>(
-                    <News key={i} dateTime={item.webPublicationDate} link={item.webUrl} title={item.webTitle} name={item.sectionName} id={item.id} image={item.fields?.thumbnail}/>
-                ))
-            }
-        </NewsItem>:<Loading/>
-        }
-    </NewsList>
+        <HomeStyle>
+        <Routes>
+            <Route path='/' element={<Frontpage news={news}/>} containerRef={containerRef} infiniteRef={infiniteRef}/>
+            <Route path='/sport' element={<Sport news={news}/>}/>
+            <Route path='/technology' element={<Technology news={news}/>}/>
+            <Route path='/politics' element={<Politics news={news}/>}/>
+            <Route path='/signin' element={<SignIn/>}/>
+            <Route path='/search' element={<Search/>}/>
+        </Routes>
+        </HomeStyle>
   )
 }
 
-const NewsList = styled(motion.div)`
-    margin:7rem 5rem 0 5rem;
-    border-top:1px solid #c9c7c7;
-    h2{
-        font-size:2rem;
-        margin:1.5rem 0;
-    }
-    @media screen and (max-width:680px){
-        margin:7rem 1.5rem 0 1.5rem;
-        border-top:none;
-        h2{
-            font-size:1.5rem;
-        }
-    }
+const HomeStyle = styled.div`
+@media screen and (max-width:680px) {
+    margin-top:15rem;
+}
 `
-const NewsItem = styled(motion.div)`
-    min-height:80vh;
-    display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(500px, 1fr));
-    grid-column-gap:3rem;
-    grid-row-gap:5rem;
-    @media screen and (max-width:680px){
-        grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));
-    }
-`
+
 export default Home

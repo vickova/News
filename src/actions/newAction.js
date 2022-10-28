@@ -1,12 +1,12 @@
 import axios from 'axios';
-import { news_items, SearchNewsUrl } from '../api';
+import { news_items, SearchNewsUrl, NewsList } from '../api';
 
 
 
 // ACTION CREATOR
 // You add two arrow functions when you are using thunk
-export const LoadNews = ()=> async(dispatch)=>{
-    const upcomingNewsDate = await axios.get(news_items);
+export const LoadNews = (pageNum)=> async(dispatch)=>{
+    const upcomingNewsDate = await axios.get(NewsList(pageNum));
     dispatch({
         type:'FETCH_NEWS',
         payload:{
@@ -22,5 +22,10 @@ export const SearchNews = (gameName)=>async(dispatch)=>{
         payload:{
             searchNews:UpcomingSearch.data.data.response.results
         }
+    })
+}
+export const Page = (dispatch)=>{
+    dispatch({
+        type:'PAGE',
     })
 }

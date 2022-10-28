@@ -15,3 +15,22 @@ export const fadeIn = {
         }
     }
 }
+export const slideIn = {
+    hidden:{
+        opacity:0,
+        left:-200,
+    },
+    show:{
+        opacity:1,
+        left:0,
+        transition:{
+            duration:0.75,
+        },
+        exit:{
+            opacity:1,
+            transition:{
+                duration:0.75,
+            }
+        }
+    }
+}

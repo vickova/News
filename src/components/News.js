@@ -1,65 +1,36 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import NoImage from '../images/racer.jpg'
+import NoImage from '../images/racer.jpg';
 // Styling and animation
 import styled, { keyframes } from 'styled-components';
 import {motion} from 'framer-motion';
-import { fadeIn } from '../animation';
+import { useScroll } from './useScroll';
+import { fadeIn, slideIn } from '../animation';
 import { Keyframes } from 'styled-components';
 
 const News = ({name, dateTime, image, title, link}) => {
+  const [element, controls] = useScroll()
   const currentDAte = new Date(dateTime).toDateString()
   return (
-    <NewsStyle variants={fadeIn} initial='hidden' animate='show' whileInView={{opacity:1}}>
+    <NewsStyle animate={controls} initial='show' variants={slideIn} ref={element} whileInView={{opacity:1}}>
       <a href={link} target='blank'>
+        <div className='top'>
+          <h4>{name}</h4>
+          <p className='date'>{currentDAte}</p>
+        </div>
         <img src={image?image:NoImage} alt={name} />
-        <h3>{name}</h3>
-        <p className='date'>{currentDAte}</p>
-        <p>{title}</p>
+        <h3>{title}</h3>
       </a>
     </NewsStyle>
   )
 }
-
-const Animate = keyframes`
-  0%{
-    background-color: #c2c0c0;
-    scale:0;
-    padding:1.5rem;
-  }
-  50%{
-  }
-  100%{
-    background-color: #fff;
-    scale:1;
-    padding:1rem;
-  }
-`
-const back = keyframes`
-  0%{
-    background-color: #c2c0c0;
-    scale:0;
-    object-fit:cover;
-    height:0;
-  }
-  50%{
-  }
-  100%{
-    background-color: #fff;
-    scale:1;
-    padding:0;
-    object-fit:cover;
-    height:60%;
-    
-  }
-`
 
 const NewsStyle = styled(motion.div)`
 min-height:30vh;
 box-shadow:0px 5px 30px rgba(0, 0, 0, 0.2);
 padding:1.5rem;
 border-radius:1rem 0;
-animation:${Animate} ease 2s;
+animation:linear 2s 10s;
 background-color:#FFF;
 &:hover{
   padding:1rem;
@@ -72,23 +43,31 @@ background-color:#FFF;
   a:visited{
     color: red;
   }
-  h3{
-    font-weight:700;
+  h4{
+    font-weight:500;
     font-size:1.5rem;
     margin:1rem 0;
+  }
+  h3{
+    font-size:2rem;
+    margin:1rem 0;
+    font-weight:500;
   }
   p{
     font-size:1.2rem;
   }
   .date{
-    font-weight:600;
     margin:.5rem 0;
   }
   img{
     width:100%;
     height:35vh;
     object-fit:cover;
-    animation:${back} ease-out 2s;
+  }
+  .top{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:2rem;
   }
   @media screen and (max-width:680px){
     p{

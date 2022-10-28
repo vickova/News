@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Footer from './components/Footer';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
@@ -14,6 +14,7 @@ const Nav = React.lazy(()=> import('./components/Nav'));
 
 
 function App() {
+  const [pageNum, setPageNum] = useState(1);
   // const counter = useSelector(state=> state.counter);
   return (
     <AppStyle className="App">
@@ -21,7 +22,7 @@ function App() {
       <Nav/>
       <AnimatePresence>
       <Routes>
-        <Route path='/' element={<Suspense fallback={<Loading/>}><Home/></Suspense>}/>
+        <Route path='*' element={<Suspense fallback={<Loading/>}><Home pageNum={pageNum} setPageNum={setPageNum}/></Suspense>}/>
         <Route path='/search' element={<Suspense fallback={<Loading/>}><Search/></Suspense>}/>
       </Routes>
       </AnimatePresence>
@@ -31,7 +32,13 @@ function App() {
 }
 
 const AppStyle = styled(motion.div)`
-  background:linear-gradient(180deg, white, white, #121212, #121212)
+  /* background:linear-gradient(180deg, white, white, #121212, #121212) */
+  border:1px solid #121212;
+  margin:0rem 2rem;
+  @media screen and (max-width:680px) {
+    border:none;
+    margin:0;
+  }
 
 `
 export default App;
