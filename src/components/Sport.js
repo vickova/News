@@ -1,7 +1,8 @@
 import React from 'react';
+import { useState } from 'react';
 import { SectionStyle } from './GlobalStyles';
 const Sport = ({news}) => {
-
+const [update, setUpdate] = useState(false);
   return (
     <SectionStyle>
         {
@@ -20,7 +21,8 @@ const Sport = ({news}) => {
                     </div>
                 )
                 }
-            })
+            }
+            )
         }
     </SectionStyle>
   )

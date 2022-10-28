@@ -27,6 +27,8 @@ const GlobalStyles = createGlobalStyle`
 
 export const SectionStyle = styled.div`
     padding:1rem;
+    height:150vh;
+    overflow:auto;
     .sections{
         display:flex;
         align-items:center;

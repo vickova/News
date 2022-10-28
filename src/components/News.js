@@ -67,6 +67,7 @@ background-color:#FFF;
   .top{
     display:flex;
     justify-content:space-between;
+    align-items:center;
     margin-bottom:2rem;
   }
   @media screen and (max-width:680px){
@@ -75,6 +76,17 @@ background-color:#FFF;
     }
     h3{
       font-size:1.2rem;
+    }
+  }
+  @media screen and (max-width:400px){
+    margin:1.5rem 0;
+    h3{
+      font-size:1rem;
+    }
+    .top{
+      h4{
+        max-width:50%;
+      }
     }
   }
 `

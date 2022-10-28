@@ -111,6 +111,29 @@ const SearchStyle = styled.div`
             font-size:1.5rem;
         }
     }
+    @media screen and (max-width:400px){
+        margin-top:8rem;
+        h2{
+        }
+        .head{
+            margin:0rem 1rem;
+            display:block;
+        }
+        .arrow{
+            justify-content:space-between;
+        }
+        .input{
+            width:100%;
+            margin:1rem 0;
+            justify-content:left;
+            input{
+                width:100%;
+            }
+            button{
+                font-size:1rem;
+            }
+        }
+    }
 `
 const NewsItem = styled(motion.div)`
     min-height:80vh;
@@ -120,6 +143,10 @@ const NewsItem = styled(motion.div)`
     grid-row-gap:5rem;
     @media screen and (max-width:680px){
         grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));
+    }
+    @media screen and (max-width:400px){
+        display:block;
+        margin-top:3rem;
     }
 `
 export default Search

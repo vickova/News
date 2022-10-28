@@ -41,7 +41,7 @@ const NewsList = styled(motion.div)`
             font-size:1.5rem;
         }
     }
-    @media screen and (max-width:360px){
+    @media screen and (max-width:400px){
         margin:2rem 1rem;
     }
 `
@@ -53,6 +53,9 @@ const NewsItem = styled(motion.div)`
     grid-row-gap:5rem;
     @media screen and (max-width:680px){
         grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));
+    }
+    @media screen and (max-width:400px){
+        display:block;
     }
 `
 export default Frontpage

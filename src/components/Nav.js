@@ -19,6 +19,7 @@ const Nav = () => {
     const [textInput, setTextInput] = useState('');
     const [toggle, setToggle] = useState(false);
     const [menu, setMenu] = useState(false);
+    const [notify, setNotify] = useState(false);
     const dispatch = useDispatch();
     const {pathname} = useLocation()
     
@@ -46,13 +47,13 @@ const Nav = () => {
             </div>
             <div className='regist'>
                 <p><Link to='/signin' className={pathname==='/signin'?'selected':''}><span>SIGNIN</span> / <span>SIGNUP</span></Link></p>
-                <img src={Notify} alt="notify" />
+                <img src={Notify} alt="notify" className={notify?'notify':''} onClick={()=>setNotify(!notify)}/>
             </div>
         </form>
         </div>
     <NavStyle $toggle={toggle}>
         <div className='header'>
-            <h1>THE VERACIOUS NEWSPAPER</h1>
+            <h1><Link to='/'>THE VERACIOUS NEWSPAPER</Link></h1>
         </div>
         <form className='inputs'>
             <div className='search'>
@@ -64,7 +65,7 @@ const Nav = () => {
             </div>
             <div className='regist'>
                 <p><Link to='/signin' className={pathname==='/signin'?'selected':''}><span>SIGNIN</span> / <span>SIGNUP</span></Link></p>
-                <img src={Notify} alt="notify" />
+                <img src={Notify} alt="notify" className={notify?'notify':''} onClick={()=>setNotify(!notify)}/>
             </div>
         </form>
     </NavStyle>
@@ -141,6 +142,7 @@ const NavStyle = styled(motion.div)`
         }
         .regist{
             display:flex;
+            align-items:center;
             gap:1rem;
             p{
                 cursor:pointer;
@@ -153,12 +155,24 @@ const NavStyle = styled(motion.div)`
                     font-weight:700;
                 }
             }
+            img{
+                cursor:pointer;
+            }
+            .notify{
+                background-color: #f35959;
+                border-radius:50%;
+                padding:.2rem;
+            }
         }
     }
     h1{
       margin:0;
       color:#078b6f;
       font-size:2.5rem;
+      a{
+        text-decoration:none;
+        color:#078b6f;
+      }
     }
     .search{
         display:flex;
@@ -235,7 +249,7 @@ z-index:2;
     }
     @media screen and (max-width:680px) {
         ul{
-            display:block;
+            display:${({menu})=>menu?'block':'none'};
             position:absolute;
             background-color:#FFF;
             height:${({menu})=>menu?'fit-content':'0px'};
@@ -284,6 +298,7 @@ const NavCover = styled.div`
         .regist{
             display:flex;
             gap:1rem;
+            align-items:center;
             p{
                 cursor:pointer;
                 a{
@@ -294,6 +309,14 @@ const NavCover = styled.div`
                     color:#078b6f;
                     font-weight:700;
                 }
+            }
+            img{
+                cursor:pointer;
+            }
+            .notify{
+                background-color: #f35959;
+                border-radius:50%;
+                padding:.2rem;
             }
         }
     }
