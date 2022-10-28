@@ -35,30 +35,30 @@ const SignIn = () => {
             <PhoneInput country={country}/>
             <div className='input'>
                 <label htmlFor="password">Enter Password</label>
-                <input type={password?"password":"text"} />
+                <input type={password?"text":"password"} />
                 <div className='eye' onClick={()=>setPassword(!password)}>
                 {password?
-                <img src={ClosedEye} alt=" eye" />:
-                <img src={OpenEye} alt=" eye" />
+                <img src={OpenEye} alt=" eye" />:
+                <img src={ClosedEye} alt=" eye" />
                     }
                 </div>
             </div>
             <div className='input'>
                 <label htmlFor="confirm">Confirm Password</label>
-                <input type={confirmpassword?"password":"text"}/>
+                <input type={confirmpassword?"text":"password"}/>
                 <div className='eye' onClick={()=>setConfirmPassword(!confirmpassword)}>
                 {confirmpassword?
-                <img src={ClosedEye} alt=" eye" />:
-                <img src={OpenEye} alt=" eye" />
+                <img src={OpenEye} alt=" eye" />:
+                <img src={ClosedEye} alt=" eye" />
                 }
                 </div>
             </div>
-            <Link to='/account/secure-1'>
+            <Link to='/'>
             <button>Sign In</button>
             </Link>
         </div>
       </form>
-      <p className='que'>Already Registered? <span><Link to='/account/login'> Log in</Link></span></p>
+      <p className='que'>Already Registered? <span><Link to='/signin'> Log in</Link></span></p>
     </div>
     </SignInStyle>
   )
@@ -67,6 +67,7 @@ const SignIn = () => {
 const SignInStyle = styled.div`
   display:flex;
   justify-content:center;
+  height:100vh;
   .signin{
     padding:1rem 0;
     border-radius: 21px;
