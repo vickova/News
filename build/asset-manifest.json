@@ -1,9 +1,9 @@
 {
   "files": {
     "main.css": "/static/css/main.e6c13ad2.css",
-    "main.js": "/static/js/main.dbfae0c7.js",
-    "static/js/101.a70a0433.chunk.js": "/static/js/101.a70a0433.chunk.js",
-    "static/js/826.a5dbf0f2.chunk.js": "/static/js/826.a5dbf0f2.chunk.js",
+    "main.js": "/static/js/main.3968a30e.js",
+    "static/js/101.88be43d2.chunk.js": "/static/js/101.88be43d2.chunk.js",
+    "static/js/826.35ab914c.chunk.js": "/static/js/826.35ab914c.chunk.js",
     "static/js/787.4acf1520.chunk.js": "/static/js/787.4acf1520.chunk.js",
     "static/media/racer.jpg": "/static/media/racer.580f15cd29971622e0d1.jpg",
     "static/media/news.svg": "/static/media/news.7210a9c0c29819a4e3edec43d7ef6738.svg",
@@ -30,13 +30,13 @@
     "static/media/ghana-flag.svg": "/static/media/ghana-flag.1471ba4229bfdc6272be56c7f9e138d2.svg",
     "static/media/nigeria.svg": "/static/media/nigeria.fa309a633dd59cee8654905091d4f4cc.svg",
     "main.e6c13ad2.css.map": "/static/css/main.e6c13ad2.css.map",
-    "main.dbfae0c7.js.map": "/static/js/main.dbfae0c7.js.map",
-    "101.a70a0433.chunk.js.map": "/static/js/101.a70a0433.chunk.js.map",
-    "826.a5dbf0f2.chunk.js.map": "/static/js/826.a5dbf0f2.chunk.js.map",
+    "main.3968a30e.js.map": "/static/js/main.3968a30e.js.map",
+    "101.88be43d2.chunk.js.map": "/static/js/101.88be43d2.chunk.js.map",
+    "826.35ab914c.chunk.js.map": "/static/js/826.35ab914c.chunk.js.map",
     "787.4acf1520.chunk.js.map": "/static/js/787.4acf1520.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e6c13ad2.css",
-    "static/js/main.dbfae0c7.js"
+    "static/js/main.3968a30e.js"
   ]
 }
