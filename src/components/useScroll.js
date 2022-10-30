@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Page } from "../actions/newAction";
 
 export const useScroll = () => {
-    const [element, view] = useInView()
+    const [element, view] = useInView({threshold:0.2})
     const controls = useAnimation()
     // console.log(view)
     if(view){

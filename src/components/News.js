@@ -32,6 +32,7 @@ padding:1.5rem;
 border-radius:1rem 0;
 animation:linear 2s 10s;
 background-color:#FFF;
+z-index:1;
 &:hover{
   padding:1rem;
   animation:all 1s ease-in;

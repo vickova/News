@@ -59,7 +59,7 @@ console.log(searchNews?searchNews:'')
 }
 
 const SearchStyle = styled.div`
-    margin:3rem 5rem 0 5rem;
+    margin:7rem 5rem 0 5rem;
     h2{
         font-size:2rem;
         margin:1.5rem 0;
@@ -105,14 +105,14 @@ const SearchStyle = styled.div`
         }
     }
     @media screen and (max-width:680px){
-        margin:7rem 1.5rem 0 1.5rem;
+        margin:10rem 1.5rem 0 1.5rem;
         border-top:none;
         h2{
             font-size:1.5rem;
         }
     }
     @media screen and (max-width:400px){
-        margin-top:8rem;
+        margin-top:10rem;
         h2{
         }
         .head{

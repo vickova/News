@@ -31,6 +31,7 @@ const Frontpage = ({news, containerRef, infiniteRef}) => {
 
 const NewsList = styled(motion.div)`
     margin:5rem 3rem;
+    z-index:1;
     h2{
         font-size:2rem;
         margin:1.5rem 0;

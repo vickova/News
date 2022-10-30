@@ -83,7 +83,7 @@ const heroNews = news[news.length-1];
 
 const HomeStyle = styled.div`
 @media screen and (max-width:680px) {
-    margin-top:15rem;
+    margin-top:12rem;
 }
 `
 

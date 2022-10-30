@@ -6,7 +6,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import { SearchNews } from '../actions/newAction';
 import Chevron from '../images/chevron-down.svg'
 import NewsIcon from '../images/news.svg';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import Notify from '../images/notify.svg';
@@ -20,6 +20,7 @@ const Nav = () => {
     const [toggle, setToggle] = useState(false);
     const [menu, setMenu] = useState(false);
     const [notify, setNotify] = useState(false);
+    const touch = useRef();
     const dispatch = useDispatch();
     const {pathname} = useLocation()
     
@@ -34,7 +35,7 @@ const Nav = () => {
     }
     // console.log(textInput)
   return (
-    <NavCover>
+    <NavCover pathname={pathname} ref={touch}>
         <div className='menu'>
             <Burger menu={menu} setMenu={setMenu}/>
         <form className='top-input'>
@@ -81,23 +82,7 @@ const Nav = () => {
   )
 }
 
-const back = keyframes`
-  0%{
-    background-color: #c2c0c0;
-    scale:0;
-    object-fit:cover;
-  }
-  50%{
-    object-fit:contain;
-  }
-  100%{
-    background-color: #fff;
-    scale:1;
-    padding:0;
-    object-fit:cover;
-    
-  }
-`
+
 const NavStyle = styled(motion.div)`
     display:flex;
     justify-content:space-between;
@@ -105,7 +90,6 @@ const NavStyle = styled(motion.div)`
     gap:4.5rem;
     padding:1rem 5rem 1.5rem 5rem;
     border-bottom:1px solid #121212;
-    z-index:99;
     .header{
         display:flex;
         align-items:center;
@@ -128,7 +112,6 @@ const NavStyle = styled(motion.div)`
             font-size:1rem;
             border:1px solid #121212;
             border-left:none;
-            animation:${back} 2s ease;
             a{
                 padding:1rem;
                 text-decoration:none;
@@ -283,7 +266,6 @@ const NavCover = styled.div`
             font-size:1rem;
             border:1px solid #121212;
             border-left:none;
-            animation:${back} 2s ease;
             a{
                 padding:1rem;
                 text-decoration:none;
@@ -354,8 +336,7 @@ const NavCover = styled.div`
         font-weight:700;
     }
     @media screen and (max-width:680px) {
-        position:fixed;
-        top:0;
+        position:${({pathname})=>pathname === '/signin'?'static':'fixed'};        top:0;
         left:0;
         .menu{
             display:flex;

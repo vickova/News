@@ -33,10 +33,11 @@ export const SectionStyle = styled.div`
         display:flex;
         align-items:center;
         gap:2rem;
-        background-color: #ecebeb;
+        background-color: #dddddd;
         margin:1rem 0;
         .text{
             width:45%;
+            padding:1rem;
         }
         .image{
             width: 50%;
@@ -56,9 +57,13 @@ export const SectionStyle = styled.div`
             display:block;
             .text{
                 width:100%;
+                padding:.5rem;
             }
             .image{
                 width:100%;
+            }
+            p{
+                font-size:1.2rem;
             }
         }
     }

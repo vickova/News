@@ -67,7 +67,7 @@ const SignIn = () => {
 const SignInStyle = styled.div`
   display:flex;
   justify-content:center;
-  height:100vh;
+  height:120vh;
   .signin{
     padding:1rem 0;
     border-radius: 21px;
@@ -190,13 +190,14 @@ const SignInStyle = styled.div`
     }
   }
   @media screen and (max-width:680px){
-        padding:1rem;
+        padding:1rem 0;
         width:100%;
         z-index:1;
         .signin{
             width:100%;
         }
         form{
+          width:100%;
           .label{
             input{
               padding-right:9rem;

@@ -21,7 +21,7 @@ const spin = keyframes`
     100% {
       transform: rotate(360deg);
       border: 5px solid #ffffff6a;
-      scale:2;
+      scale:1;
     }
   	`
 const LoadingStyle = styled.div`
